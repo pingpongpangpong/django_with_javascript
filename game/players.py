@@ -8,7 +8,6 @@ class GamePlayer(AsyncWebsocketConsumer):
         await self.channel_layer.group_add(
                 self.room_group_name, self.channel_name
         )
-        print(len(self.channel_layer.groups[self.room_group_name]))
         if len(self.channel_layer.groups[self.room_group_name]) >= 3:
             await self.channel_layer.group_discard(
                 self.room_group_name, self.channel_name
